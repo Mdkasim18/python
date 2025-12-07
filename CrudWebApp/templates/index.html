@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student CRUD Web App</title>
+</head>
+<body>
+    <h1>Student CRUD Web App</h1>
+
+    <h2>Add Student</h2>
+    <form method="POST" action="/add">
+        <input type="text" name="name" placeholder="Enter name" required>
+        <input type="email" name="email" placeholder="Enter email" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <h2>All Students</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td>{{ s['id'] }}</td>
+            <td>{{ s['name'] }}</td>
+            <td>{{ s['email'] }}</td>
+            <td>
+                <a href="/edit/{{ s['id'] }}">Edit</a> |
+                <a href="/delete/{{ s['id'] }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
